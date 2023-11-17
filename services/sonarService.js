@@ -22,9 +22,15 @@ exports.getProjects = async (organization) => {
 };
 
 exports.getIssues = async (projects, additionalFields) => {
-  console.log("projects: ", projects);
+  console.log("retrieving issues for project: ", projects);
   return await sonarRequest(`${SONAR_BASE_URL}/issues/search`, {
     projects,
     additionalFields,
+  });
+};
+
+exports.getRuleInformation = async (ruleKey) => {
+  return await sonarRequest(`${SONAR_BASE_URL}/rules/show`, {
+    key: ruleKey,
   });
 };
