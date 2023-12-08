@@ -2,6 +2,7 @@ const axios = require("axios");
 const { SONAR_BASE_URL } = require("../constants/constants");
 
 const SONAR_TOKEN = process.env.SONAR_TOKEN;
+const DEFAULT_ORGANIZATION = process.env.DEFAULT_ORGANIZATION;
 
 async function sonarRequest(url, params = {}) {
   const response = await axios.get(url, {
@@ -32,5 +33,6 @@ exports.getIssues = async (projects, additionalFields) => {
 exports.getRuleInformation = async (ruleKey) => {
   return await sonarRequest(`${SONAR_BASE_URL}/rules/show`, {
     key: ruleKey,
+    organization: DEFAULT_ORGANIZATION,
   });
 };
