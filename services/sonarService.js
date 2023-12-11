@@ -31,6 +31,7 @@ exports.getIssues = async (projects, additionalFields) => {
 };
 
 exports.getRuleInformation = async (ruleKey) => {
+  console.log("retrieving rule information for rule: ", ruleKey);
   return await sonarRequest(`${SONAR_BASE_URL}/rules/show`, {
     key: ruleKey,
     organization: DEFAULT_ORGANIZATION,
